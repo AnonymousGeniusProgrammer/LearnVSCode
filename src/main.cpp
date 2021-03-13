@@ -1,18 +1,5 @@
 #include <iostream>
-
-/**
- * @brief swap value of two integer
- * 
- * @param a the first value
- * @param b the second value
- */
-void swap(int &a, int &b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
+#include "swap.hpp"
 
 int main(int argc, char **argv) 
 {
@@ -22,8 +9,9 @@ int main(int argc, char **argv)
     std::cout << "Before swap: " << std::endl
     << "First value: " << val1 << std::endl
     << "Second value: " << val2 << std::endl;
-    swap(val1, val2);
-
+    swap swaper = swap();
+    swaper.doSwap(val1, val2);
+ 
     std::cout << "Before swap: " << std::endl
     << "First value: " << val1 << std::endl
     << "Second value: " << val2 << std::endl;
