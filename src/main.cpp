@@ -3,10 +3,9 @@
 /**
  * @brief swap value of two integer
  * 
- * @param a first value
- * @param b second value
+ * @param a the first value
+ * @param b the second value
  */
-
 void swap(int &a, int &b)
 {
     int temp = a;
