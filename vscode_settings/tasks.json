@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Clean",
+            "command": "cd ${workspaceFolder} && rmdir /S build && mkdir build && cd build && mkdir RW && mkdir RWS",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "Clean RW",
+            "command": "cd ${workspaceFolder}/build && rmdir /S RW && mkdir RW",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "Clean RWS",
+            "command": "cd ${workspaceFolder}/build && rmdir /S RWS && mkdir RWS",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "RW configure",
+            "command": "cd ${workspaceFolder}/build/RW && cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -G\"Visual Studio 15 2017 Win64\" -DBOOST_ROOT=\"C:\\lib\\boost_1_67_0\" -DBOOST_LIBRARYDIR=\"C:\\lib\\boost_1_67_0\\stage\\lib\" -DXERCESC_ROOT:PATH=\"C:\\lib\\xerces_3_2_3\" -DSWIG_EXECUTABLE=\"C:\\Program Files\\SWIG\\swig.exe\" -DBULLET_ROOT:PATH=\"C:\\lib\\bullet3\" -Dgtest_force_shared_crt:BOOL=OFF -DRW_USE_GTEST:BOOL=OFF -DRW_USE_LUA:BOOL=Off -DBUILD_rw_lua:BOOL=OFF -DBUILD_rw_python:BOOL=OFF ..\\..\\RobWork",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "RW build",
+            "command": "cd ${workspaceFolder}/build/RW && cmake --build .\\ --config RelwithDebInfo -t ccd_static && cmake --build .\\ --config RelwithDebInfo",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "RWS Configure",
+            "command": "cd ${workspaceFolder}/build/RWS && cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -G\"Visual Studio 15 2017 Win64\" -DCMAKE_INSTALL_PREFIX=C:\\Temp\\RobWorkStudio -DBUILD_rws_lua:BOOL=OFF -DBUILD_rws_python:BOOL=OFF ..\\..\\RobWorkStudio",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "RWS build",
+            "command": "cd ${workspaceFolder\\build\\RWS && cmake --build .\\ -j8 --config RelWithDebInfo",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        },
+        {
+            "label": "RWS install",
+            "command": "cd ${workspaceFolder}\\build\\RWS && cmake --build .\\ --config RelWithDebInfo -t INSTALL && c:\\lib\\Qt\\5.12.10\\msvc2017_64\\bin\\windeployqt.exe c:\\Temp\\RobWorkStudio\\bin && copy ..\\..\\RobWork\\bin\\relwithdebinfo\\*.dll C:\\Temp\\RobWorkStudio\\bin",
+            "type": "shell",
+            "problemMatcher": "$tsc",
+            "group": "build",
+        }
+    ]
+}
+
